@@ -1,0 +1,31 @@
+import React, { useState } from 'react'
+import { BrowserRouter, Routes, Route, Link, Outlet } from 'react-router-dom';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Accordion from 'react-bootstrap/Accordion';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+
+function Settings() {
+  const [count, setCount] = useState(0);
+  
+  const button1Onclick = () => setCount((count) => count + 1);
+
+  const layout1 = (
+    <>
+      
+      <h1>Settings</h1>
+      <div className="card">
+        <button onClick={button1Onclick}>
+          count is {count}
+        </button>
+      </div>
+
+    </>
+  );
+
+  return layout1;
+}
+
+export default Settings
