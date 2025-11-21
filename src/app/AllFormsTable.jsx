@@ -92,7 +92,7 @@ function AllForms() {
               </thead>
               <tbody>
                 {
-                  safetyChecklistsBwFiltered.map((a, index)=>(
+                  safetyChecklistsBsFiltered.map((a, index)=>(
                     <tr key={index}>
                       <td>{index+1}</td>
                       <td>{a.discipline}</td>
@@ -114,7 +114,7 @@ function AllForms() {
               </thead>
               <tbody>
                 {
-                  safetyChecklistsBsFiltered.map((a, index)=>(
+                  safetyChecklistsBwFiltered.map((a, index)=>(
                     <tr key={index}>
                       <td>{index+1}</td>
                       <td>{a.discipline}</td>
