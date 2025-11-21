@@ -106,7 +106,7 @@ function Form1() {
           
         </Row>
         <div className="text-end">
-          <Button type="submit">Submit form</Button>
+          <Button type="submit">Submit Form</Button>
           <Button variant="primary">Primary</Button>
           <Button variant="secondary">Secondary</Button>
           <Button variant="success">Success</Button>

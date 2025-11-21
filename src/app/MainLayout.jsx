@@ -58,6 +58,7 @@ function MainLayout() {
                 <Nav className="flex-column">
                   <Nav.Link href="/home/form1">Form 1</Nav.Link>
                   <Nav.Link href="/home/form2">Form 2</Nav.Link>
+                  <Nav.Link href="/home/allformstable">Safety Checklists (Table)</Nav.Link>
                   <Nav.Link href="/home/simerror">Sim Error</Nav.Link>
                   <Nav.Link href="/settings">Settings</Nav.Link>
                   <Nav.Link href="reports">Reports</Nav.Link>
