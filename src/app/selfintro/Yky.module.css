@@ -1,0 +1,130 @@
+div.containerFluid {
+  background:#ffc107;
+  font-family: 'Open Sans', sans-serif;
+  width:100vh;
+  max-width:1500px;
+  margin-top:0px;
+  
+}
+
+div.container {
+  width:100%;
+  margin-left: auto;  /* Centers horizontally */
+  margin-right: auto; /* Centers horizontally */  
+  max-width:1500px;
+  margin-top:0px;
+  background:#ffc107;
+}
+
+div.header1 {
+  color: #FF6F61;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 0px;
+  text-align:left;
+}
+
+div.header2 {
+  color: #222;
+  font-size: 50px;
+  font-weight: 700;
+  text-align:left;
+}
+
+div.divcontainer1 {
+  width:90%;
+  max-width:1200px;
+  margin-top:0px;
+  margin-left: auto;  /* Centers horizontally */
+  margin-right: auto; /* Centers horizontally */  
+  padding:100px 30px;
+  background:url('src/assets/profile.png') right bottom no-repeat,#FFF;
+  background-size:contain;
+}
+
+div.divcontainer2 {
+  width:90%;
+  height:50px;
+  max-width:1200px;
+  margin-left: auto;  /* Centers horizontally */
+  margin-right: auto; /* Centers horizontally */  
+}
+
+div.divcontainer2a {
+  background:#222;
+}
+div.divcontainer2b {
+  background:#FF6F61;
+}
+
+div.divcontainer4 {
+  width:90%;
+  margin-left: auto;  /* Centers horizontally */
+  margin-right: auto; /* Centers horizontally */  
+  margin-top:20px;
+  padding:30px 30px 10px 30px;
+  background:#fff;
+}
+
+div.divcontainer5 {
+  width:90%;
+  margin-left: auto;  /* Centers horizontally */
+  margin-right: auto; /* Centers horizontally */  
+  background:#fff;
+  padding-bottom: 10px;
+}
+
+.containerCaption {
+  position: relative;
+  width: 100%;
+  margin-bottom: 30px;
+  padding-bottom: 10px;
+}
+
+.containerCaption h2 {
+  color: #222222;
+  font-size: 35px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  margin: 0;
+  text-align:left;
+}
+
+.containerCaption::after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 200px;
+  height: 3px;
+  bottom: 0;
+  left: 0;
+  background: #FF6F61;
+}
+
+.aboutImg {
+  width:100%;
+  height:auto;
+}
+
+.educationContainer {
+  position: relative;
+  width: 100%;
+  padding: 20px 0 20px 20px;
+  border-left: 1px solid #FF6F61;
+  border-bottom: 1px solid #FF6F61;
+}
+
+.educationContainer span::before {
+  position: absolute;
+  content: "";
+  width: 11px;
+  height: 11px;
+  background: #FF6F61;
+  top: 5px;
+  left: -6px;
+  border-radius: 5px;
+}
+
+.aboutMe {
+  text-align: left;
+}

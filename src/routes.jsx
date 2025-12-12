@@ -6,6 +6,8 @@ import MainLayout from './app/MainLayout.jsx'
 import Home from './app/Home.jsx'
 import Form1 from './app/Form1.jsx'
 import Form2 from './app/Form2.jsx'
+import Yhy from './app/selfintro/Yhy.jsx'
+import Yky from './app/selfintro/Yky.jsx'
 import AllFormsTable from './app/AllFormsTable.jsx'
 import Reports from './app/Reports.jsx'
 import SimError from './app/SimError.jsx'
@@ -22,6 +24,15 @@ const router = createBrowserRouter([
   {
     path: '/settings',
     element: <Settings />,
+  },
+  {
+    path: "yhy", 
+    //Component: Yhy 
+    element: <Yhy />,
+  },
+  {
+    path: "yky", 
+    element: <Yky />,
   },
   {
     path: "/home",
