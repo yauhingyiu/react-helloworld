@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { BrowserRouter, Routes, Route, Link, Outlet, useParams, useLoaderData } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link, Outlet, useParams, useLoaderData, useOutletContext } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -12,17 +12,28 @@ import Spinner from 'react-bootstrap/Spinner';
 import moment from 'moment';
 import MyDateRangePicker from '../common/MyDateRangePicker.jsx';
 import {useFetchGetData, DATE_FORMAT_YYYYMMDD, DATE_FORMAT_YYYYMMDD_HHMM} from '../services/ApiServices';
+import jsonLocations from '../assets/locations.json';
 
-function Reports() {
+function Locations() {
   
-  const [count, setCount] = useState(0);
+  const [currentUser, currentContract] = useOutletContext();
   
-  const {loaderData} = useLoaderData();
+  const { discipline } = useParams();
+  
+  const [loaderData, setLoaderData] = useState([]);
+  
+  useEffect(() => {
+    let loaderData = jsonLocations.data;
+    setLoaderData(loaderData);
+    return ()=>{
+      
+    };
+  }, [discipline]);
 
   const layout1 = (
     <Container fluid>
       <div className="row text-start">
-        <h1>Reports</h1>
+        <h1>Locations</h1>
       </div>
       &nbsp;
       <div className="row">
@@ -32,8 +43,7 @@ function Reports() {
             <tr>
               <th>#</th>
               <th>ID</th>
-              <th>Discipline</th>
-              <th>Form Title</th>
+              <th>Location</th>
             </tr>
           </thead>
           <tbody>
@@ -42,15 +52,14 @@ function Reports() {
                 <tr key={index}>
                   <td>{index+1}</td>
                   <td>{a.id}</td>
-                  <td>{a.discipline}</td>
-                  <td>{a.title}</td>
+                  <td>{a.location}</td>
                 </tr>
               ))
             }
             {
               loaderData.length==0 && (
                 <tr>
-                  <td colSpan="4">No records</td>
+                  <td colSpan="3">No records</td>
                 </tr>
               )
             }
@@ -64,4 +73,4 @@ function Reports() {
   return layout1;
 }
 
-export default Reports
+export default Locations

@@ -1,5 +1,6 @@
 // src/services/apiService.js
 import React, { useEffect, useState } from 'react'
+import jsonContracts from '../assets/contracts.json';
 
 export const fetchUserData = async (userId) => {
   try {
@@ -130,3 +131,4 @@ export const handleSubmit = (event) => {
 
 export const DATE_FORMAT_YYYYMMDD = 'YYYY-MM-DD';
 export const DATE_FORMAT_YYYYMMDD_HHMM = 'YYYY-MM-DD HH:mm';
+

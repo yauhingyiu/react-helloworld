@@ -1,0 +1,11 @@
+{"data":[
+  {"cntrKey":1,"formId":"BS-F02","userId":"acsm01","location":"Wing A SLAB G/F","submissionDate":"2025-12-01 12:48","id":1},
+  {"cntrKey":1,"formId":"BS-F03","userId":"acsm01","location":"Wing A SLAB G/F","submissionDate":"2025-12-01 13:44","id":2},
+  {"cntrKey":1,"formId":"BS-F04","userId":"acsm01","location":"Wing A SLAB G/F","submissionDate":"2025-12-01 14:48","id":3},
+  {"cntrKey":1,"formId":"BS-F02","userId":"acsm02","location":"Wing B SLAB 1/F","submissionDate":"2025-12-02 12:48","id":4},
+  {"cntrKey":1,"formId":"BS-F03","userId":"acsm02","location":"Wing B SLAB 1/F","submissionDate":"2025-12-02 12:48","id":5},
+  {"cntrKey":1,"formId":"BS-F05","userId":"acsm02","location":"Wing B SLAB 1/F","submissionDate":"2025-12-02 12:48","id":6},
+  {"cntrKey":1,"formId":"BW-F01","userId":"acsm02","location":"Wing B SLAB 2/F","submissionDate":"2025-12-02 13:48","id":7},
+  {"cntrKey":1,"formId":"BW-F02","userId":"acsm02","location":"Wing B SLAB 2/F","submissionDate":"2025-12-02 13:08","id":8},
+  {"cntrKey":1,"formId":"BW-F03","userId":"acsm02","location":"Wing B SLAB 1/F","submissionDate":"2025-12-02 14:28","id":9}
+]}

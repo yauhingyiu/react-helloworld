@@ -14,56 +14,49 @@ function Home() {
   
   const button1Onclick = () => setCount((count) => count + 1);
 
-  const data = [
-    {discipline:'BS', title:'aaa', date:''}
-  ];
-
   const layout1 = (
-    <Container>
+    <Container fluid>
       <div className="row text-start">
         <h1>Home</h1>
       </div>
       <div className="row">
-        <div className="col">
-          <Card style={{ width: '18rem' }}>
+        <div className="col-3">
+          <Card>
             <Card.Body>
               <Card.Title>BS</Card.Title>
-              <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
+              <Card.Subtitle className="mb-2 text-muted">Safety Checklist</Card.Subtitle>
               <Card.Text>
                 Number of checklist submitted: 7
-                
               </Card.Text>
-              <Card.Link href="#">View</Card.Link>
+              <Link to="/home/submissions/BS" className="btn btn-primary">View</Link>
             </Card.Body>
           </Card>
           &nbsp;
         </div>
         
-        <div className="col">
-          <Card style={{ width: '18rem' }}>
+        <div className="col-3">
+          <Card>
             <Card.Body>
               <Card.Title>BW</Card.Title>
-              <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
+              <Card.Subtitle className="mb-2 text-muted">Safety Checklist</Card.Subtitle>
               <Card.Text>
                 Number of checklist submitted: 9
-                
               </Card.Text>
-              <Card.Link href="#">View</Card.Link>
+              <Link to="/home/submissions/BW" className="btn btn-primary">View</Link>
             </Card.Body>
           </Card>
           &nbsp;
         </div>
         
-        <div className="col">
-          <Card style={{ width: '18rem' }}>
+        <div className="col-3">
+          <Card>
             <Card.Body>
               <Card.Title>FDN</Card.Title>
-              <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
+              <Card.Subtitle className="mb-2 text-muted">Safety Checklist</Card.Subtitle>
               <Card.Text>
                 Number of checklist submitted: 5
-                
               </Card.Text>
-              <Card.Link href="#">View</Card.Link>
+              <Link to="/home/submissions/FDN" className="btn btn-primary">View</Link>
             </Card.Body>
           </Card>
           &nbsp;
@@ -71,32 +64,7 @@ function Home() {
         
       </div>
       &nbsp;
-      <div className="row">
-        <div className="col">
-        <Table striped bordered hover>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Discipline</th>
-              <th>Form Title</th>
-              <th>Submission time</th>
-            </tr>
-          </thead>
-          <tbody>
-            {
-              data.map((a, index)=>(
-                <tr key={index}>
-                  <td>{index+1}</td>
-                  <td>{a.discipline}</td>
-                  <td>{a.title}</td>
-                  <td>{a.title}</td>
-                </tr>
-              ))
-            }
-          </tbody>
-        </Table>
-        </div>
-      </div>
+      
     </Container>
   );
 

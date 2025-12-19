@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { BrowserRouter, Routes, Route, Link, Outlet, useLoaderData } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link, Outlet, useLoaderData, useNavigate } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
@@ -10,11 +10,22 @@ import Tabs from 'react-bootstrap/Tabs';
 import Accordion from 'react-bootstrap/Accordion';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import jsonAllSafetyChecklists from '../assets/all-safety-checklists.json';
 
 function AllForms() {
-  const [count, setCount] = useState(0);
+  const navigate = useNavigate();
   
-  const {loaderData} = useLoaderData();
+  //const {loaderData} = useLoaderData();
+  const [loaderData, setLoadData] = useState([]);
+  
+  useEffect(() => {
+    let loadData = jsonAllSafetyChecklists.data;
+    setLoadData(loadData);
+    
+    return ()=>{
+      
+    };
+  }, [loaderData]);
   
   
   const [safetyChecklists, setSafetyChecklists] = useState([]);
@@ -59,7 +70,7 @@ function AllForms() {
   const layout1 = (
     <Container fluid>
       
-      <h1>All Safety checklists</h1>
+      <h1 className="text-start">Safety checklists</h1>
       <Row>
         <Col md={'auto'}>
           <Form.Group>
@@ -82,7 +93,7 @@ function AllForms() {
           className="mb-3"
         >
           <Tab eventKey="BS" title="BS">
-            <Table striped bordered hover>
+            <Table striped bordered hover responsive>
               <thead>
                 <tr>
                   <th>#</th>
@@ -160,7 +171,7 @@ function AllForms() {
           <tbody>
             {
               safetyChecklistsFiltered.map((a, index)=>(
-                <tr key={index}>
+                <tr key={index} onClick={()=>navigate(`../forms/bs/${a.id.toLowerCase()}/0`)}>
                   <td>{index+1}</td>
                   <td>{a.discipline}</td>
                   <td>{a.title}</td>

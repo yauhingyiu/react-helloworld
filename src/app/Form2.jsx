@@ -15,7 +15,9 @@ function Form2() {
   const layout1 = (
     <Container fluid>
       
-      <h1>Form 2</h1>
+      <div className="row text-start">
+        <h1>Form2</h1>
+      </div>
       <div className="card">
         <button onClick={button1Onclick}>
           count is {count}
