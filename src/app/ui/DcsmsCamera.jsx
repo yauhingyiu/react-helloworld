@@ -29,6 +29,7 @@ function DcsmsCamera() {
   let mediaStream;
   
   useEffect(() => {
+    console.log('useEffect get canvas');
     // 2. Access the native HTML canvas element using the ref's .current property
     const canvas = canvasRef.current;
 
@@ -58,6 +59,7 @@ function DcsmsCamera() {
   }, [images1]);
   
   useEffect(() => {
+    console.log('useEffect get photo');
     const img = imgRef.current;
 
     // Ensure the canvas element exists (optional, but good practice)
@@ -72,16 +74,25 @@ function DcsmsCamera() {
   }, [photo]);
   
   useEffect(() => {
-    // Get a list of available media input (and output) devices
-    // then get a MediaStream for the currently selected input device
-    navigator.mediaDevices.enumerateDevices()
-      .then(gotDevices)
-      .catch(error => {
-        console.log('enumerateDevices() error: ', error);
-      })
-      .then(getStream)
-      ;
+    const getMediaDevices = async () => {
+      try {
+        // Request media access first to get device labels and IDs
+        await navigator.mediaDevices.getUserMedia({ audio: false, video: true });
+        
+        // Then enumerate devices
+        const deviceInfos = await navigator.mediaDevices.enumerateDevices();
+        console.info("deviceInfos", deviceInfos);
+        setCameraDevices( deviceInfos.filter(a=>a.kind === 'videoinput') );
+      } catch (err) {
+        console.error("Error enumerating devices:", err);
+      }
+    };
+
+    getMediaDevices();
   }, []);
+
+
+  
   
   // From the list of media devices available, set up the camera source <select>,
   // then get a video stream from the default camera source.
@@ -104,7 +115,13 @@ function DcsmsCamera() {
         track.stop();
       });
     }
-    var videoSource = e.target.value;
+    var videoSource = null;
+    
+    if(e) {
+      videoSource = e.target.value;
+    } else {
+      videoSource = cameraDevices[0].deviceId;
+    }
     constraints = {
       video: {deviceId: videoSource ? {exact: videoSource} : undefined}
     };
@@ -118,7 +135,6 @@ function DcsmsCamera() {
   // Display the stream from the currently selected camera source, and then
   // create an ImageCapture object, using the video from the stream.
   function gotStream(stream) {
-    console.log('getUserMedia() got stream: ', stream);
     mediaStream = stream;
     
     const video = videoRef.current;
