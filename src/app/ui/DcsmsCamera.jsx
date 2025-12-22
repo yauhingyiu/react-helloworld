@@ -90,6 +90,30 @@ function DcsmsCamera() {
 
     getMediaDevices();
   }, []);
+  
+  useEffect(() => {
+    console.log('videoRef', videoRef);
+    console.log('imgRef', imgRef);
+    return ()=>{};
+  }, [videoRef, imgRef]);
+  
+  useEffect(() => {
+    if(mediaStream)
+    {
+      const video = videoRef.current;
+      setMsg(msg+' '+video);
+      if (!video) {
+        return;
+      }
+      
+      video.srcObject = mediaStream;
+      setMsg(msg+' setImageCapture ');
+      setImageCapture( new ImageCapture(mediaStream.getVideoTracks()[0]) );
+    
+      //getCapabilities();
+    }
+    return ()=>{};
+  }, [mediaStream]);
 
 
   
@@ -104,7 +128,7 @@ function DcsmsCamera() {
     }
     var videoSource = null;
     
-    if(e) {
+    if(e && e.target && e.target.value) {
       videoSource = e.target.value;
     } else {
       videoSource = cameraDevices[0].deviceId;
@@ -125,16 +149,7 @@ function DcsmsCamera() {
   const gotStream = (stream) => {
     setMediaStream( stream );
     
-    const video = videoRef.current;
     
-    if (!video) {
-      return;
-    }
-    
-    video.srcObject = stream;
-    setMsg(msg+' setImageCapture ');
-    setImageCapture( new ImageCapture(stream.getVideoTracks()[0]) );
-    //getCapabilities();
   }
 
   // Get the PhotoCapabilities for the currently selected camera source.
@@ -195,6 +210,7 @@ function DcsmsCamera() {
     }
   }
 
+  
   
   const layout1 = (
     <Container fluid>
