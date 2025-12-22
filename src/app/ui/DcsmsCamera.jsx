@@ -17,6 +17,7 @@ import {useFetchGetData, DATE_FORMAT_YYYYMMDD, DATE_FORMAT_YYYYMMDD_HHMM} from '
 function DcsmsCamera() {
   
   const [photo, setPhoto] = useState(null);
+  const [msg, setMsg] = useState(null);
   
   const canvasRef = useRef(null);
   const imgRef = useRef(null);
@@ -24,9 +25,8 @@ function DcsmsCamera() {
 
   const [cameraDevices, setCameraDevices] = useState([]);
   const [images1, setImages1] = useState([]);
-  
-  let imageCapture;
-  let mediaStream;
+  const [imageCapture, setImageCapture] = useState(null);
+  const [mediaStream, setMediaStream] = useState(null);
   
   useEffect(() => {
     console.log('useEffect get canvas');
@@ -94,22 +94,9 @@ function DcsmsCamera() {
 
   
   
-  // From the list of media devices available, set up the camera source <select>,
-  // then get a video stream from the default camera source.
-  function gotDevices(deviceInfos) {
-    
-    if(!deviceInfos)
-    {
-      console.log('!deviceInfos');
-      return;
-    }
-    console.log('deviceInfos', deviceInfos);
-    setCameraDevices( deviceInfos.filter(a=>a.kind === 'videoinput') );
-    //setCameraDevices( deviceInfos );
-  }
-
   // Get a video stream from the currently selected camera source.
-  function getStream(e) {
+  const getStream = (e) => {
+    setMsg(msg+'getStream '+e.target.value);
     if (mediaStream) {
       mediaStream.getTracks().forEach(track => {
         track.stop();
@@ -129,13 +116,14 @@ function DcsmsCamera() {
       .then(gotStream)
       .catch(error => {
         console.log('getUserMedia error: ', error);
+        setMsg(msg+'getUserMedia error: '+error);
       });
   }
 
   // Display the stream from the currently selected camera source, and then
   // create an ImageCapture object, using the video from the stream.
-  function gotStream(stream) {
-    mediaStream = stream;
+  const gotStream = (stream) => {
+    setMediaStream( stream );
     
     const video = videoRef.current;
     
@@ -144,53 +132,67 @@ function DcsmsCamera() {
     }
     
     video.srcObject = stream;
-    imageCapture = new ImageCapture(stream.getVideoTracks()[0]);
+    setMsg(msg+' setImageCapture ');
+    setImageCapture( new ImageCapture(stream.getVideoTracks()[0]) );
     //getCapabilities();
   }
 
   // Get the PhotoCapabilities for the currently selected camera source.
-  function getCapabilities() {
-    imageCapture.getPhotoCapabilities().then(function(capabilities) {
-      console.log('Camera capabilities:', capabilities);
-      if (capabilities.zoom.max > 0) {
-        zoomInput.min = capabilities.zoom.min;
-        zoomInput.max = capabilities.zoom.max;
-        zoomInput.value = capabilities.zoom.current;
-        zoomInput.classList.remove('hidden');
-      }
-    }).catch(function(error) {
-      console.log('getCapabilities() error: ', error);
-    });
+  const getCapabilities = () => {
+    if(imageCapture)
+    {
+      imageCapture.getPhotoCapabilities().then(function(capabilities) {
+        console.log('Camera capabilities:', capabilities);
+        if (capabilities.zoom.max > 0) {
+          zoomInput.min = capabilities.zoom.min;
+          zoomInput.max = capabilities.zoom.max;
+          zoomInput.value = capabilities.zoom.current;
+        }
+      }).catch(function(error) {
+        console.log('getCapabilities() error: ', error);
+      });
+    }
   }
 
   // Get an ImageBitmap from the currently selected camera source and
   // display this with a canvas element.
-  function grabFrame() {
-    imageCapture.grabFrame().then( (imageBitmap) => {
-      console.log('Grabbed frame:', imageBitmap);
-      
-      //setImages1( [...images1, imageBitmap] );
-      setImages1( [imageBitmap] );
-    }).catch(function(error) {
-      console.log('grabFrame() error: ', error);
-    });
+  const grabFrame = () => {
+    setMsg(msg+' grabFrame() ');
+    if(imageCapture)
+    {
+      imageCapture.grabFrame().then( (imageBitmap) => {
+        console.log('Grabbed frame:', imageBitmap);
+        
+        //setImages1( [...images1, imageBitmap] );
+        setImages1( [imageBitmap] );
+      }).catch(function(error) {
+        console.log('grabFrame() error: ', error);
+      });
+    }
   }
 
-  function setZoom() {
-    imageCapture.setOptions({
-      zoom: zoomInput.value
-    });
+  const setZoom = () => {
+    if(imageCapture)
+    {
+      imageCapture.setOptions({
+        zoom: zoomInput.value
+      });
+    }
   }
 
   // Get a Blob from the currently selected camera source and
   // display this with an img element.
-  function takePhoto() {
-    imageCapture.takePhoto().then(function(blob) {
-      console.log('Took photo:', blob);
-      setPhoto(blob);
-    }).catch(function(error) {
-      console.log('takePhoto() error: ', error);
-    });
+  const takePhoto = () => {
+    setMsg(msg+' takePhoto() ');
+    if(imageCapture)
+    {
+      imageCapture.takePhoto().then(function(blob) {
+        console.log('Took photo:', blob);
+        setPhoto(blob);
+      }).catch(function(error) {
+        console.log('takePhoto() error: ', error);
+      });
+    }
   }
 
   
@@ -229,6 +231,12 @@ function DcsmsCamera() {
         </div>
       </div>
         
+        
+      <div className="row">
+        <div className="col">
+        {msg}
+        </div>
+      </div>
     </Container>
   );
 
