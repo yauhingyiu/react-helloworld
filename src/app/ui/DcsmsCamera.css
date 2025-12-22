@@ -1,0 +1,8 @@
+.hidden {
+  display: none;
+}
+
+.borderBelow {
+  margin: 0 0 20px 0;
+  padding: 0 0 20px 0;
+}
