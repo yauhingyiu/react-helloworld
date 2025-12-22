@@ -20,7 +20,7 @@ function Home() {
         <h1>Home</h1>
       </div>
       <div className="row">
-        <div className="col-3">
+        <div className="col col-md-4 col-sm-12 col-xs-12">
           <Card>
             <Card.Body>
               <Card.Title>BS</Card.Title>
@@ -34,7 +34,7 @@ function Home() {
           &nbsp;
         </div>
         
-        <div className="col-3">
+        <div className="col col-md-4 col-sm-12 col-xs-12">
           <Card>
             <Card.Body>
               <Card.Title>BW</Card.Title>
@@ -48,7 +48,7 @@ function Home() {
           &nbsp;
         </div>
         
-        <div className="col-3">
+        <div className="col col-md-4 col-sm-12 col-xs-12">
           <Card>
             <Card.Body>
               <Card.Title>FDN</Card.Title>

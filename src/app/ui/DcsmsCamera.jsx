@@ -20,6 +20,7 @@ function DcsmsCamera() {
   
   const canvasRef = useRef(null);
   const imgRef = useRef(null);
+  const videoRef = useRef(null);
 
   const [cameraDevices, setCameraDevices] = useState([]);
   const [images1, setImages1] = useState([]);
@@ -70,17 +71,18 @@ function DcsmsCamera() {
     }
   }, [photo]);
   
+  useEffect(() => {
+    // Get a list of available media input (and output) devices
+    // then get a MediaStream for the currently selected input device
+    navigator.mediaDevices.enumerateDevices()
+      .then(gotDevices)
+      .catch(error => {
+        console.log('enumerateDevices() error: ', error);
+      })
+      .then(getStream)
+      ;
+  }, []);
   
-  // Get a list of available media input (and output) devices
-  // then get a MediaStream for the currently selected input device
-  navigator.mediaDevices.enumerateDevices()
-    .then(gotDevices)
-    .catch(error => {
-      console.log('enumerateDevices() error: ', error);
-    })
-    //.then(getStream)
-    ;
-
   // From the list of media devices available, set up the camera source <select>,
   // then get a video stream from the default camera source.
   function gotDevices(deviceInfos) {
@@ -90,17 +92,19 @@ function DcsmsCamera() {
       console.log('!deviceInfos');
       return;
     }
+    console.log('deviceInfos', deviceInfos);
     setCameraDevices( deviceInfos.filter(a=>a.kind === 'videoinput') );
+    //setCameraDevices( deviceInfos );
   }
 
   // Get a video stream from the currently selected camera source.
-  function getStream() {
+  function getStream(e) {
     if (mediaStream) {
       mediaStream.getTracks().forEach(track => {
         track.stop();
       });
     }
-    var videoSource = videoSelect.value;
+    var videoSource = e.target.value;
     constraints = {
       video: {deviceId: videoSource ? {exact: videoSource} : undefined}
     };
@@ -116,10 +120,16 @@ function DcsmsCamera() {
   function gotStream(stream) {
     console.log('getUserMedia() got stream: ', stream);
     mediaStream = stream;
+    
+    const video = videoRef.current;
+    
+    if (!video) {
+      return;
+    }
+    
     video.srcObject = stream;
-    video.classList.remove('hidden');
     imageCapture = new ImageCapture(stream.getVideoTracks()[0]);
-    getCapabilities();
+    //getCapabilities();
   }
 
   // Get the PhotoCapabilities for the currently selected camera source.
@@ -185,7 +195,7 @@ function DcsmsCamera() {
         <select id="videoSource" onChange={getStream}>
           {
             cameraDevices && cameraDevices.map( (item, index)=>(
-            <option value={item.deviceId}>{item.label} + '&nbsp;' + {index}</option>
+            <option key={index} value={item.deviceId}>{item.label}&nbsp;{index}</option>
             ))
           }
         </select>
@@ -194,7 +204,8 @@ function DcsmsCamera() {
       
       <div className="row">
         <div className="col">
-        <video autoPlay playsInline className={styles.hidden}></video>
+        <span>video</span>
+        <video ref={videoRef} autoPlay playsInline></video>
         <span>img</span>
         <img ref={imgRef} />
         <span>canvas</span>
