@@ -58,7 +58,7 @@ function DcsmsCamera({modalShow, setModalShow, parentCallback}) {
       //canvas.height = testImg.height;
       
       const img = new window.Image();
-      img.src = testImg;
+      img.src = imgSrc;
       //img.width = 800;
       //img.height = 566;
       
@@ -90,9 +90,9 @@ function DcsmsCamera({modalShow, setModalShow, parentCallback}) {
   };
   
   const videoConstraints = {
-    width: { min: 480 },
-    height: { min: 720 },
-    aspectRatio: 0.6666666667
+    width: { min: 1080 },
+    height: { min: 720 }
+    //aspectRatio: 0.6666666667
   };
   
   const updateMousePosition = (e) => {
@@ -142,7 +142,7 @@ function DcsmsCamera({modalShow, setModalShow, parentCallback}) {
             ref={webcamRef}
             screenshotFormat="image/jpeg"
             videoConstraints={videoConstraints} 
-            width={480}
+            width={1080}
             height={720}
           />
         </Col>
