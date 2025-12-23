@@ -1,6 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { BrowserRouter, Routes, Route, Link, Outlet, useParams, useLoaderData } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
+import Image from 'react-bootstrap/Image';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
@@ -10,250 +11,197 @@ import Accordion from 'react-bootstrap/Accordion';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Spinner from 'react-bootstrap/Spinner';
+import Modal from 'react-bootstrap/Modal';
 import moment from 'moment';
-import styles from './DcsmsCamera.css';
+import styles from './DcsmsCamera.module.css';
 import {useFetchGetData, DATE_FORMAT_YYYYMMDD, DATE_FORMAT_YYYYMMDD_HHMM} from '../../services/ApiServices';
+import Webcam from "react-webcam";
+import iconArrowClockwise from '/arrow-clockwise.svg'
+import testImg from '/Offsiteconstruction.jpg'
+import iconCloseXmark from '/circle-xmark.svg'
 
-function DcsmsCamera() {
+function DcsmsCamera({modalShow, setModalShow, parentCallback}) {
   
-  const [photo, setPhoto] = useState(null);
   const [msg, setMsg] = useState(null);
+  const [mouseDown, setMouseDown] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   
+  const webcamRef = useRef(null);
   const canvasRef = useRef(null);
-  const imgRef = useRef(null);
-  const videoRef = useRef(null);
-
-  const [cameraDevices, setCameraDevices] = useState([]);
-  const [images1, setImages1] = useState([]);
-  const [imageCapture, setImageCapture] = useState(null);
-  const [mediaStream, setMediaStream] = useState(null);
+  const [imgSrc, setImgSrc] = useState(null);
   
-  useEffect(() => {
-    console.log('useEffect get canvas');
-    // 2. Access the native HTML canvas element using the ref's .current property
+  // 0 = show camera, 1 = show picture
+  const [mode, setMode] = useState(0);
+
+  const btnCapture = useCallback(() => {
+    if(webcamRef.current && webcamRef.current.getScreenshot())
+    {
+      console.log('webcamRef.current');
+      const imageSrc = webcamRef.current.getScreenshot();
+      setImgSrc(imageSrc);
+    }
+    else {
+      
+      console.log('hardcode img', canvasRef);
+      
+      setImgSrc(testImg);
+    }
+    setMode(1);
+  }, [canvasRef, webcamRef, setImgSrc]);
+  
+  const btnResetCanvas = ()=>{
+    //console.log('btnResetCanvas', mode);
+    if(imgSrc && mode==1)
+    {
+      let canvas = canvasRef.current;
+      //canvas.width = testImg.width;
+      //canvas.height = testImg.height;
+      
+      const img = new window.Image();
+      img.src = testImg;
+      //img.width = 800;
+      //img.height = 566;
+      
+      img.onload = () => {
+        canvas.width = img.width;
+        canvas.height = img.height;
+        canvas.getContext('2d').drawImage(img, 0, 0, img.width, img.height);
+      };
+      
+    }
+  };
+  
+  useEffect(()=>{
+    btnResetCanvas();
+  }, [mode, imgSrc]);
+  
+  const btnCancel = () => {
+    setMode(0);
+  };
+  
+  const btnOk = () => {
+    // 
+    if( parentCallback )
+    {
+      parentCallback( imgSrc );
+      setModalShow(false);
+      setMode(0);
+    }
+  };
+  
+  const videoConstraints = {
+    width: { min: 480 },
+    height: { min: 720 },
+    aspectRatio: 0.6666666667
+  };
+  
+  const updateMousePosition = (e) => {
     const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
 
-    // Ensure the canvas element exists (optional, but good practice)
-    if (!canvas) {
-      return;
-    }
-
-    if(images1 && images1.length>0)
+    const rect = canvas.getBoundingClientRect();
+    let x = e.clientX - rect.left;
+    //x = e.clientX - 50;
+    let y = e.clientY - rect.top;
+    //y = e.clientY - 50;
+    setMousePosition({ x, y });
+  };
+  
+  const drawDot = (e) => {
+    if(!mouseDown)
     {
-      let imageBitmap = images1[0];
-      
-      // 3. Get the 2D rendering context
-      const ctx = canvas.getContext('2d');
-
-      // Ensure the context was successfully obtained
-      if (ctx) {
-        // 4. Use the context to draw
-        ctx.fillStyle = 'blue';
-        ctx.fillRect(10, 10, 150, 100); // Draws a blue rectangle
-      }
-      
-      canvas.width = imageBitmap.width;
-      canvas.height = imageBitmap.height;
-      ctx.drawImage(imageBitmap, 0, 0);
+      //return;
     }
-  }, [images1]);
-  
-  useEffect(() => {
-    console.log('useEffect get photo');
-    const img = imgRef.current;
+    console.log('e.clientX e.clientY ',e.pageX,e.clientX, mousePosition.y, e.clientY);
+    const mouseX = e.pageX;
+    const mouseY = e.pageY;
 
-    // Ensure the canvas element exists (optional, but good practice)
-    if (!img) {
-      return;
-    }
-    
-    if(photo) {
-      //img.classList.remove('hidden');
-      img.src = URL.createObjectURL(photo);
-    }
-  }, [photo]);
-  
-  useEffect(() => {
-    const getMediaDevices = async () => {
-      try {
-        // Request media access first to get device labels and IDs
-        await navigator.mediaDevices.getUserMedia({ audio: false, video: true });
-        
-        // Then enumerate devices
-        const deviceInfos = await navigator.mediaDevices.enumerateDevices();
-        console.info("deviceInfos", deviceInfos);
-        setCameraDevices( deviceInfos.filter(a=>a.kind === 'videoinput') );
-      } catch (err) {
-        console.error("Error enumerating devices:", err);
-      }
-    };
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    // Draw the dot (a small circle)
+    ctx.beginPath();
+    ctx.arc(mouseX, mouseY, 5, 0, Math.PI * 2); // x, y, radius, start angle, end angle
+    ctx.fillStyle = 'red'; // Set the color of the dot
+    ctx.fill();
+    ctx.closePath();
+  };
 
-    getMediaDevices();
-  }, []);
-  
-  useEffect(() => {
-    console.log('videoRef', videoRef);
-    console.log('imgRef', imgRef);
-    return ()=>{};
-  }, [videoRef, imgRef]);
-  
-  useEffect(() => {
-    if(mediaStream)
-    {
-      const video = videoRef.current;
-      setMsg(msg+' '+video);
-      if (!video) {
-        return;
-      }
-      
-      video.srcObject = mediaStream;
-      setMsg(msg+' setImageCapture ');
-      setImageCapture( new ImageCapture(mediaStream.getVideoTracks()[0]) );
-    
-      //getCapabilities();
-    }
-    return ()=>{};
-  }, [mediaStream]);
-
-
-  
-  
-  // Get a video stream from the currently selected camera source.
-  const getStream = (e) => {
-    setMsg(msg+'getStream '+e.target.value);
-    if (mediaStream) {
-      mediaStream.getTracks().forEach(track => {
-        track.stop();
-      });
-    }
-    var videoSource = null;
-    
-    if(e && e.target && e.target.value) {
-      videoSource = e.target.value;
-    } else {
-      videoSource = cameraDevices[0].deviceId;
-    }
-    constraints = {
-      video: {deviceId: videoSource ? {exact: videoSource} : undefined}
-    };
-    navigator.mediaDevices.getUserMedia(constraints)
-      .then(gotStream)
-      .catch(error => {
-        console.log('getUserMedia error: ', error);
-        setMsg(msg+'getUserMedia error: '+error);
-      });
-  }
-
-  // Display the stream from the currently selected camera source, and then
-  // create an ImageCapture object, using the video from the stream.
-  const gotStream = (stream) => {
-    setMediaStream( stream );
-    
-    
-  }
-
-  // Get the PhotoCapabilities for the currently selected camera source.
-  const getCapabilities = () => {
-    if(imageCapture)
-    {
-      imageCapture.getPhotoCapabilities().then(function(capabilities) {
-        console.log('Camera capabilities:', capabilities);
-        if (capabilities.zoom.max > 0) {
-          zoomInput.min = capabilities.zoom.min;
-          zoomInput.max = capabilities.zoom.max;
-          zoomInput.value = capabilities.zoom.current;
-        }
-      }).catch(function(error) {
-        console.log('getCapabilities() error: ', error);
-      });
-    }
-  }
-
-  // Get an ImageBitmap from the currently selected camera source and
-  // display this with a canvas element.
-  const grabFrame = () => {
-    setMsg(msg+' grabFrame() ');
-    if(imageCapture)
-    {
-      imageCapture.grabFrame().then( (imageBitmap) => {
-        console.log('Grabbed frame:', imageBitmap);
-        
-        //setImages1( [...images1, imageBitmap] );
-        setImages1( [imageBitmap] );
-      }).catch(function(error) {
-        console.log('grabFrame() error: ', error);
-      });
-    }
-  }
-
-  const setZoom = () => {
-    if(imageCapture)
-    {
-      imageCapture.setOptions({
-        zoom: zoomInput.value
-      });
-    }
-  }
-
-  // Get a Blob from the currently selected camera source and
-  // display this with an img element.
-  const takePhoto = () => {
-    setMsg(msg+' takePhoto() ');
-    if(imageCapture)
-    {
-      imageCapture.takePhoto().then(function(blob) {
-        console.log('Took photo:', blob);
-        setPhoto(blob);
-      }).catch(function(error) {
-        console.log('takePhoto() error: ', error);
-      });
-    }
-  }
-
-  
-  
   const layout1 = (
-    <Container fluid>
+    <Modal
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+      fullscreen={true}
+      show={modalShow}
+    >
+      {/* Optional: Add content that stays at the top/grows */}
+      <Row className={`flex-grow-1 ${mode==0? '':'d-none'}`}>
+        <Col>
+          <Webcam
+            audio={false}
+            ref={webcamRef}
+            screenshotFormat="image/jpeg"
+            videoConstraints={videoConstraints} 
+            width={480}
+            height={720}
+          />
+        </Col>
+      </Row>
+
+      {/* The div to be aligned to the bottom. 
+          'mt-auto' pushes it to the bottom by adding a top margin automatically. */}
+      <Row className={`mt-auto ${mode==0? '':'d-none'}`}>
+        <Col className="d-grid">
+          <Button onClick={()=>setModalShow(false)} variant="danger">Cancel</Button>
+        </Col>
+        <Col className="d-grid">
+          <Button onClick={btnCapture} variant="primary">Take photo</Button>
+        </Col>
+      </Row>
+        
+      {/* Optional: Add content that stays at the top/grows */}
+      <Row className={`flex-grow-1 ${mode==1? '':'d-none'}`}>
+        <div className="col d-flex justify-content-center">
+          <canvas 
+            ref={canvasRef}
+            className={styles.canvasContainer}
+          ></canvas>
+        </div>
+      </Row>
+
+      {/* The div to be aligned to the bottom. 
+          'mt-auto' pushes it to the bottom by adding a top margin automatically. */}
+      <Row className={`${mode==1? '':'d-none'}`}>
+        <Col className="d-grid">
+          <Button onClick={btnCancel}  variant="danger">Cancel</Button>
+        </Col>
+        <Col xs="auto">
+          <img src={iconArrowClockwise} 
+            onClick={btnResetCanvas} className={`logo`} />
+        </Col>
+        <Col className="d-grid">
+          <Button onClick={btnOk}  variant="primary">OK</Button>
+        </Col>
+      </Row>
+      
+    {mode==2 && (<>
       <div className="row align-items-center">
-        <div className="col">
-          <Button variant="primary" onClick={grabFrame}>Grab Frame</Button>
-        </div>
-        <div className="col">
-          <Button variant="primary" onClick={takePhoto}>Take Photo</Button>
-        </div>
-      </div>
-      &nbsp;
-      <div className="row">
-        <div className="col">
-        <label htmlFor="videoSource">Video source: </label>
-        <select id="videoSource" onChange={getStream}>
-          {
-            cameraDevices && cameraDevices.map( (item, index)=>(
-            <option key={index} value={item.deviceId}>{item.label}&nbsp;{index}</option>
-            ))
-          }
-        </select>
+        <div className="col justify-content-center">
+          {imgSrc && ( <Image src={imgSrc} fluid /> )}
         </div>
       </div>
       
       <div className="row">
-        <div className="col">
-        <span>video</span>
-        <video ref={videoRef} autoPlay playsInline></video>
-        <span>img</span>
-        <img ref={imgRef} />
-        <span>canvas</span>
-        <canvas ref={canvasRef}></canvas>
+        <div className="col d-grid">
+          <Button onClick={btnCancel} variant="danger">Cancel</Button>
+        </div>
+        <div className="col d-grid">
+          <Button onClick={btnOk} variant="primary">OK</Button>
         </div>
       </div>
-        
-        
-      <div className="row">
-        <div className="col">
-        {msg}
-        </div>
-      </div>
-    </Container>
+    </>)}
+    
+    </Modal>
   );
 
   return layout1;

@@ -1,0 +1,40 @@
+.hidden {
+  display: none;
+}
+
+.borderBelow {
+  margin: 0 0 20px 0;
+  padding: 0 0 20px 0;
+}
+
+
+.canvasContainer {
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center;     /* Centers vertically */
+    height: 100vh;           /* Example: Makes container take full viewport height */
+}
+
+.cameraGrid {
+  position:relative;
+  margin: 0;
+  width: 100px;
+  height: 100px;
+  border:1px solid#000;
+}
+
+.cameraGridImage {
+  position:relative;
+  margin: 0;
+  width: 100px;
+  height: 100px;
+}
+
+.cameraGridBtnDelete {
+  position:relative;
+  margin: 0 0 auto auto;
+  left:35px;
+  top:-105px;
+}
+
+

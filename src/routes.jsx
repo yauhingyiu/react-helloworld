@@ -9,6 +9,7 @@ import Form1 from './app/Form1.jsx'
 import Form2 from './app/Form2.jsx'
 import BSF02 from './app/forms/bs/BSF02.jsx'
 import DcsmsCamera from './app/ui/DcsmsCamera.jsx'
+import CameraTest from './app/ui/CameraTest.jsx'
 import Yhy from './app/selfintro/Yhy.jsx'
 import Yky from './app/selfintro/Yky.jsx'
 import AllFormsTable from './app/AllFormsTable.jsx'
@@ -100,7 +101,7 @@ const router = createBrowserRouter([
           },
           {
             path:"camera",
-            Component: DcsmsCamera
+            Component: CameraTest
           },
           {
             path:"forms/bs/bs-f02/:formVersion",
