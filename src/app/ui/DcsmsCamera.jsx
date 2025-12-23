@@ -90,10 +90,10 @@ function DcsmsCamera({modalShow, setModalShow, parentCallback}) {
   };
   
   const videoConstraints = {
-    width: { min: 480 },
-    height: { min: 720 },
+    width: { min: 720 },
+    height: { min: 1080 },
     facingMode: "environment",
-    aspectRatio: 0.6666666667
+    aspectRatio: 1.5
   };
   
   const updateMousePosition = (e) => {
