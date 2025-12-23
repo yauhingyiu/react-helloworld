@@ -90,9 +90,10 @@ function DcsmsCamera({modalShow, setModalShow, parentCallback}) {
   };
   
   const videoConstraints = {
-    width: { min: 1080 },
-    height: { min: 720 }
-    //aspectRatio: 0.6666666667
+    width: { min: 480 },
+    height: { min: 720 },
+    facingMode: "environment",
+    aspectRatio: 0.6666666667
   };
   
   const updateMousePosition = (e) => {
@@ -142,7 +143,7 @@ function DcsmsCamera({modalShow, setModalShow, parentCallback}) {
             ref={webcamRef}
             screenshotFormat="image/jpeg"
             videoConstraints={videoConstraints} 
-            width={1080}
+            width={480}
             height={720}
           />
         </Col>
