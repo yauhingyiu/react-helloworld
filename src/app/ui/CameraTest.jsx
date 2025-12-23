@@ -10,13 +10,16 @@ import moment from 'moment';
 import iconCamera from '/camera-solid-full.svg'
 import iconCloseXmark from '/circle-xmark.svg'
 import styles from './DcsmsCamera.module.css';
+import {Camera} from "react-camera-pro";
 
 import {useFetchGetData, DATE_FORMAT_YYYYMMDD, DATE_FORMAT_YYYYMMDD_HHMM} from '../../services/ApiServices';
 
 
 
 function CameraTest() {
-  
+  const camera = useRef(null);
+  const [image, setImage] = useState(null);
+
   
   const layout1 = (
     <Container fluid>
@@ -28,7 +31,9 @@ function CameraTest() {
           <CameraButton />
         </div>
         <div className="col">
-          <CameraButton />
+          <Camera ref={camera} />
+          <Button onClick={() => setImage(camera.current.takePhoto())}>Take photo</Button>
+          <img src={image} alt='Taken photo'/>
         </div>
       </div>
     </Container>

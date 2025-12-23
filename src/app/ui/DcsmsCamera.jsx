@@ -143,8 +143,8 @@ function DcsmsCamera({modalShow, setModalShow, parentCallback}) {
             ref={webcamRef}
             screenshotFormat="image/jpeg"
             videoConstraints={videoConstraints} 
-            width={480}
-            height={720}
+            width={720}
+            height={1080}
           />
         </Col>
       </Row>
