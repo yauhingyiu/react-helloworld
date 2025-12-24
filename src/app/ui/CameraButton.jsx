@@ -51,6 +51,27 @@ function CameraButton() {
     setImgSrc(imgSrc);
   };
   
+  let style1 = {
+    top: window.scrollY
+  };
+  
+  const [scrollY, setScrollY] = useState(0);
+
+  const handleScroll = () => {
+    setScrollY(window.scrollY);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
+    // Cleanup function to remove the event listener when the component unmounts
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []); // Empty dependency array ensures it runs once on mount and once on unmount
+
+  
+  
   const layout1 = (
     <Container fluid>
       {!imgSrc && (
@@ -65,6 +86,7 @@ function CameraButton() {
         <Image src={imgSrc} width={100} height={100} 
           onClick={() => {
             setShowImage(true);
+            //window.scrollTo(0, 0); 
           }}
           className={styles.cameraGridImage} />
         <Image src={iconCloseXmark} 
@@ -77,7 +99,9 @@ function CameraButton() {
           onClick={() => {
             setShowImage(false);
           }}
-          className={styles.fullScreenImagePreviewComponent} />
+          className={`${styles.fullScreenImagePreviewComponent}`}
+          style={style1}
+        />
       </>
       )}
       {modalShow && <DcsmsCamera2 parentCallback={onPhoto} 

@@ -33,7 +33,7 @@ function Yhy() {
     'period1':'Jul 2024 - Now',
     'period2':'',
     'jobTitle':'System Analyst',
-    'jobDescription':'responsible for axxxxaaabbbbresponsible <em><b>AAA</b></em> axxxxaaabbbbresponsible for axxxxaaabbbbresponsible for axxxxaaabbbb',
+    'jobDescription':'Construction Site Mobile System) including requirements collection, system analysis and design, application development, testing and program deployment, etc.<br/><br/>-	To lead programmers for providing enhancement, maintenance and support services.<br/><br/>-	To liaise with end users and internal IT support teams for project implementation and maintenance support services.',
     'clientName':'Housing Authority',
     'clientAddress':'Ho Man Tin',
     'clientIcon':'',
@@ -49,14 +49,185 @@ function Yhy() {
     'remark':''
   },
   {
-    'period1':'Oct 2023 - Jul 2024',
+    'period1':'Nov 2023 - Jun 2024',
     'period2':'',
     'jobTitle':'System Analyst',
-    'jobDescription':'responsible for axxxxaaabbbbresponsible <em><b>AAA</b></em> axxxxaaabbbbresponsible for axxxxaaabbbbresponsible for axxxxaaabbbb',
-    'clientName':'Housing Authority',
-    'clientAddress':'Ho Man Tin',
+    'jobDescription':'-	Banking application development and enhancement<br/><br/>-	Design, develop, test and support Bank Compliance systems<br/><br/>-	Conduct unit test, system test, stress test, UAT<br/><br/>-	Prepare functional and technical documentation<br/><br/>-	System rollout and support<br/><br/>-	Liaise with vendor on system support and maintenance<br/><br/>- Participate in daily system support and maintenance',
+    'clientName':'China Citic Bank International',
+    'clientAddress':'One Taikoo Place',
+    'clientIcon':'',
+    'agentName':'IT Solutions',
+    'tags':[
+      'java',
+      'springframework',
+      'jquery',
+      'oracledb',
+      'angular',
+      'typescript'
+    ],
+    'remark':''
+  },
+  {
+    'period1':'Feb 2022 - Oct 2023',
+    'period2':'',
+    'jobTitle':'System Analyst',
+    'jobDescription':'-	Develop and maintain “Client Information System” using Spring Boot, Angular and TypeScript<br/><br/>-	Develop hundreds of tailor-made reports using JasperSoft<br/>-	Lead programmers for system implementation, UAT support and maintenance services in daily operation<br/>-	Collect user requirements and assist social workers in preparation of testing scenario<br/>-	Quality control on automatic steps recording and reperformance in web application using Playwright Python and JMeter<br/>-	Provide solutions or workaround for technical issues and security vulnerabilities found in App Scan<br/>-	Explore new software technologies for the Speech to Text function<br/>-	Perform feasibility study and system design on the migration of reports from Oracle BI to Jasper',
+    'clientName':'Social Welfare Department',
+    'clientAddress':'Kowlook Bay',
     'clientIcon':'',
     'agentName':'Infotech Services (HK) Limited',
+    'tags':[
+      'java',
+      'springframework',
+      'jquery',
+      'oracledb',
+      'angular',
+      'typescript'
+    ],
+    'remark':''
+  },
+  {
+    'period1':'Apr 2019 - Mar 2022',
+    'period2':'',
+    'jobTitle':'System Analyst',
+    'jobDescription':'-	Development / maintenance of Bank of China mobile app using J2EE, IBM DB2, Redis, Spring Framework, etc.<br/><br/>-	Developed the online account opening function for Bank of China mobile app, which was released on early 2020<br/>-	Developed the “forgot username” function for Bank of China. Users take photo of id card, selfie and verify the phone number by otp. They can retrieve their username if they pass the validation process.<br/>-	Enhanced the soft token registration workflow for Bank of China mobile app, which was released on 2 May 2021. User is required to take photo of id card and selfie during the registration process.<br/>-	Developing the online account opening function for Nanyang Commercial Bank, which will be released in December 2021.<br/>-	Monitoring control m jobflow automation.<br/>-	Production support and adhoc production fixes.<br/>-	Analyze user requirement, feasibility study and assign tasks to mainland teammates<br/>-	Document the technical detail of newly-developed functions<br/>-	Code review<br/>-	Web site security enhancement',
+    'clientName':'E-Banking Team, Bank of China',
+    'clientAddress':'Fo Tan',
+    'clientIcon':'',
+    'agentName':'IT Solutions',
+    'tags':[
+      'java',
+      'springframework',
+      'jquery',
+      'oracledb',
+      'angular',
+      'typescript'
+    ],
+    'remark':''
+  },
+  {
+    'period1':'May 2017 - Apr 2019',
+    'period2':'',
+    'jobTitle':'System Analyst',
+    'jobDescription':'- Develop RESTful Java Web Service to facilitate different web applications. The web services are hosted in Oracle Weblogic server. Services including <br/><br/>1. Changing password for an user account; <br/>2. Get the expiry date of a project / staff / student account; <br/>3. Get the program list a student is studying; <br/>4. Extend a user account to a specific date; <br/>5. Disable a user account by input an university id<br/><br/>- Implement 2FA using TOTP / DUO to login page of some web applications<br/>- ServiceNow: UI Page / Widget programming using Angular JS; incident management; change management<br/>- Oracle Identity Management: Application development, enhance workflow and user account provisioning according to requirement<br/>- Project account application: A Spring MVC Web Application for CUHK staffs / students to apply project account<br/>- ITSC directory: A Java servlet web application for searching CUHK staff and students<br/>- Web site security enhancement (Anti Xss, CSRF, Sql injection, etc)',
+    'clientName':'The Chinese University of Hong Kong',
+    'clientAddress':'Shatin, NT',
+    'clientIcon':'',
+    'agentName':'-',
+    'tags':[
+      'java',
+      'springframework',
+      'jquery',
+      'oracledb',
+      'angular',
+      'typescript'
+    ],
+    'remark':''
+  },
+  {
+    'period1':'Aug 2013 - May 2017',
+    'period2':'',
+    'jobTitle':'System Analyst',
+    'jobDescription':'- Provide solution to projects to support the separation of Nanyang Commercial Bank from Bank of China<br/><br/>- Web application development using JAVA/J2EE/JQUERY/HTML/XML<br/>- Experience with design patterns and web services<br/>- Experience with MVC framework.<br/>- Directly report to project manager.<br/>- Production deployment for every 6 months.<br/>- Production support and adhoc production fixes.<br/>- Monitoring control m jobflow automation.<br/>- Data migration from Db2 8.0 to Db2 9.<br/>- Web site security enhancement (Anti Xss, CSRF, etc)',
+    'clientName':'Risk Management Team, Bank of China',
+    'clientAddress':'Wan Chai',
+    'clientIcon':'',
+    'agentName':'Excel',
+    'tags':[
+      'java',
+      'springframework',
+      'jquery',
+      'oracledb',
+      'angular',
+      'typescript'
+    ],
+    'remark':''
+  },
+  {
+    'period1':'Sept 2012 - Aug 2013',
+    'period2':'',
+    'jobTitle':'Analyst Programmer',
+    'jobDescription':'-	Web application development using JAVA/J2EE/JQUERY/HTML/XML<br/><br/>-	Meeting with user to obtain user requirements<br/><br/>-	Experience with design patterns and web services <br/><br/>-	Experience with MVC framework.<br/><br/>-	Directly report to project manager.<br/><br/>-	Production support and adhoc production fixes.<br/><br/>-	Web site security enhancement (Anti Xss, CSRF, etc)',
+    'clientName':'Food, Environment and Hygiene Department (FEHD)',
+    'clientAddress':'Admiralty',
+    'clientIcon':'',
+    'agentName':'EDPS',
+    'tags':[
+      'java',
+      'springframework',
+      'jquery',
+      'oracledb',
+      'angular',
+      'typescript'
+    ],
+    'remark':''
+  },
+  {
+    'period1':'Feb 2012 - Aug 2012',
+    'period2':'',
+    'jobTitle':'Analyst Programmer',
+    'jobDescription':'Develop and maintain J2EE applications for MPFA',
+    'clientName':'Mandatory Provident Fund Schemes Authority (MPFA)',
+    'clientAddress':'Ngau Tau Kok',
+    'clientIcon':'',
+    'agentName':'Global Executive',
+    'tags':[
+      'java',
+      'springframework',
+      'jquery',
+      'oracledb',
+      'angular',
+      'typescript'
+    ],
+    'remark':''
+  },
+  {
+    'period1':'Oct 2010 - Jun 2012',
+    'period2':'',
+    'jobTitle':'Analyst Programmer',
+    'jobDescription':'Develop and maintain J2EE applications for Bank of China',
+    'clientName':'Risk Management Team, Bank of China',
+    'clientAddress':'Fo Tan',
+    'clientIcon':'',
+    'agentName':'ASL',
+    'tags':[
+      'java',
+      'springframework',
+      'jquery',
+      'oracledb',
+      'angular',
+      'typescript'
+    ],
+    'remark':''
+  },
+  {
+    'period1':'Mar 2010 - Oct 2010',
+    'period2':'',
+    'jobTitle':'Analyst Programmer',
+    'jobDescription':'-	Develop J2EE applications for Poly University<br/><br/>-	Meeting with user to obtain user requirements',
+    'clientName':'Finance Office, Poly University',
+    'clientAddress':'Hung Hom, Kowloon',
+    'clientIcon':'',
+    'agentName':'Manpower',
+    'tags':[
+      'java',
+      'springframework',
+      'jquery',
+      'oracledb',
+      'angular',
+      'typescript'
+    ],
+    'remark':''
+  },
+  {
+    'period1':'Oct 2008 - Mar 2010',
+    'period2':'',
+    'jobTitle':'Programmer',
+    'jobDescription':'-	Develop J2EE applications for Hong Kong Airport Authority<br/><br/>- Perform adhoc load test for web applications',
+    'clientName':'Hong Kong Airport Authority',
+    'clientAddress':'Hong Kong Airport',
+    'clientIcon':'',
+    'agentName':'Manpower',
     'tags':[
       'java',
       'springframework',

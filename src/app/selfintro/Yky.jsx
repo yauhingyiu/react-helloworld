@@ -106,7 +106,7 @@ function Yky() {
         
         <br/>
         <div className="row">
-          <div className="col text-end">
+          <div className="col align-items-center">
           <p>&copy; Copyright <a href="#">Yahoo</a>. All Rights Reserved</p>
           </div>
         </div>
