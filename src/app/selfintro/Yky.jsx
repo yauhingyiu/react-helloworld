@@ -53,7 +53,7 @@ function Yky() {
   ];
 
   const layout1 = (
-    <Container fluid className={styles.containerFluid}>&nbsp;
+    <Container fluid className={styles.containerFluid}>
       <div className={styles.container}>
         <div className={`row ${styles.divcontainer1}`}>
           <div className={styles.header1}>I'm</div>
@@ -104,7 +104,7 @@ function Yky() {
           </div>
         </div>
         
-        <div className="row">&nbsp;</div>
+        <br/>
         <div className="row">
           <div className="col text-end">
           <p>&copy; Copyright <a href="#">Yahoo</a>. All Rights Reserved</p>

@@ -79,8 +79,8 @@ function MainLayout2() {
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav" className="flex-column align-items-start">
                 <Nav className="flex-column">
+                  <Link to="/home/myworks" className="nav-link">My Works</Link>
                   <Link to="/home/allformstable" className="nav-link">Safety Checklists</Link>
-                  <Link to="/home/submissions" className="nav-link">Submissions</Link>
                   <Link to="/home/submissions/BS" className="nav-link">Submissions (BS)</Link>
                   <Link to="/home/submissions/BW" className="nav-link">Submissions (BW)</Link>
                   <Link to="/home/submissions/FDN" className="nav-link">Submissions (FDN)</Link>

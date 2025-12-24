@@ -1,18 +1,12 @@
 div.containerFluid {
   background:#ffc107;
   font-family: 'Open Sans', sans-serif;
-  width:100vh;
-  max-width:1500px;
   margin-top:0px;
   
 }
 
 div.container {
-  width:100%;
-  margin-left: auto;  /* Centers horizontally */
-  margin-right: auto; /* Centers horizontally */  
-  max-width:1500px;
-  margin-top:0px;
+  padding-top:20px;
   background:#ffc107;
 }
 

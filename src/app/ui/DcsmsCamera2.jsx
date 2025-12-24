@@ -52,7 +52,7 @@ function DcsmsCamera2({modalShow, setModalShow, parentCallback}) {
   
   const [numberOfCameras, setNumberOfCameras] = useState(0);
   //const [image, setImage] = useState<string | null>(null);
-  const [image, setImage] = useState(testImg);
+  const [image, setImage] = useState(null);
   const [showImage, setShowImage] = useState(false);
   const camera = useRef(null);
   //const [devices, setDevices] = useState<MediaDeviceInfo[]>([]);

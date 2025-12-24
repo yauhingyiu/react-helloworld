@@ -14,6 +14,7 @@ import Yhy from './app/selfintro/Yhy.jsx'
 import Yky from './app/selfintro/Yky.jsx'
 import AllFormsTable from './app/AllFormsTable.jsx'
 import Submissions from './app/Submissions.jsx'
+import MyWorks from './app/MyWorks.jsx'
 import Locations from './app/Locations.jsx'
 import Reports from './app/Reports.jsx'
 import SimError from './app/SimError.jsx'
@@ -68,6 +69,10 @@ const router = createBrowserRouter([
             },
             //*/
             Component: AllFormsTable 
+          },
+          {
+            path: "myworks", 
+            element: <MyWorks/>
           },
           {
             path: "submissions", 

@@ -4,12 +4,10 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Image from 'react-bootstrap/Image';
 import Row from 'react-bootstrap/Row';
-import DcsmsCamera from './DcsmsCamera.jsx'
 import CameraButton from './CameraButton.jsx'
 import moment from 'moment';
 import iconCamera from '/camera-solid-full.svg'
 import iconCloseXmark from '/circle-xmark.svg'
-import styles from './DcsmsCamera.module.css';
 import {Camera} from "react-camera-pro";
 
 import {useFetchGetData, DATE_FORMAT_YYYYMMDD, DATE_FORMAT_YYYYMMDD_HHMM} from '../../services/ApiServices';
@@ -25,12 +23,14 @@ function CameraTest() {
     <Container fluid>
       <div className="row">
         <div className="col">
-          <CameraButton isPro={0} />
+          <CameraButton />
         </div>
         <div className="col">
-          <CameraButton isPro={1} />
+          <CameraButton />
         </div>
-        
+        <div className="col">
+          <CameraButton />
+        </div>
       </div>
     </Container>
   );

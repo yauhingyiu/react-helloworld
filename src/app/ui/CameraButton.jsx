@@ -4,20 +4,46 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Image from 'react-bootstrap/Image';
 import Row from 'react-bootstrap/Row';
-import DcsmsCamera from './DcsmsCamera.jsx'
 import DcsmsCamera2 from './DcsmsCamera2.jsx'
 import moment from 'moment';
 import iconCamera from '/camera-solid-full.svg'
 import iconCloseXmark from '/circle-xmark.svg'
-import styles from './DcsmsCamera.module.css';
-
+import styles from './DcsmsCamera2.module.css';
+import testImg from '/Offsiteconstruction.jpg'
 import {useFetchGetData, DATE_FORMAT_YYYYMMDD, DATE_FORMAT_YYYYMMDD_HHMM} from '../../services/ApiServices';
 
+/*
 
+  const layout1 = (
+    <Container fluid>
+      {!imgSrc && (
+      <div className={`d-flex justify-content-center align-items-center ${styles.cameraGrid}`}>
+        <Button variant="normal" size="sm" onClick={() => setModalShow(true)}>
+          <img src={iconCamera} className="logo" title="Take photo" />
+        </Button>
+      </div>
+      )}
+      {imgSrc && (
+      <div className={styles.cameraGrid}>
+        <Image src={imgSrc} width={100} height={100} 
+          onClick={() => setShowImage(true)}
+          className={`${showImage? styles2.fullScreenImagePreviewComponent:styles.cameraGridImage}`} />
+        <Image src={iconCloseXmark} 
+          onClick={() => setImgSrc(null)} className={`logo ${styles.cameraGridBtnDelete}`} />
+      </div>
+      )}
+      <DcsmsCamera parentCallback={onPhoto} 
+        modalShow={modalShow}
+        setModalShow={setModalShow}
+      />
+    </Container>
+  );
+*/
 
-function CameraButton({isPro}) {
+function CameraButton() {
   
   const [imgSrc, setImgSrc] = useState(null);
+  const [showImage, setShowImage] = useState(false);
   
   const [modalShow, setModalShow] = React.useState(false);
   
@@ -34,35 +60,25 @@ function CameraButton({isPro}) {
         </Button>
       </div>
       )}
-      {imgSrc && (
+      {imgSrc && !showImage && (
       <div className={styles.cameraGrid}>
-        <Image src={imgSrc} width={100} height={100} className={styles.cameraGridImage} />
+        <Image src={imgSrc} width={100} height={100} 
+          onClick={() => {
+            setShowImage(true);
+          }}
+          className={styles.cameraGridImage} />
         <Image src={iconCloseXmark} 
           onClick={() => setImgSrc(null)} className={`logo ${styles.cameraGridBtnDelete}`} />
       </div>
       )}
-      <DcsmsCamera parentCallback={onPhoto} 
-        modalShow={modalShow}
-        setModalShow={setModalShow}
-      />
-    </Container>
-  );
-
-  const layout2 = (
-    <Container fluid>
-      {!imgSrc && (
-      <div className={`d-flex justify-content-center align-items-center ${styles.cameraGrid}`}>
-        <Button variant="normal" size="sm" onClick={() => setModalShow(true)}>
-          <img src={iconCamera} className="logo" title="Take photo" />
-        </Button>
-      </div>
-      )}
-      {imgSrc && (
-      <div className={styles.cameraGrid}>
-        <Image src={imgSrc} width={100} height={100} className={styles.cameraGridImage} />
-        <Image src={iconCloseXmark} 
-          onClick={() => setImgSrc(null)} className={`logo ${styles.cameraGridBtnDelete}`} />
-      </div>
+      {imgSrc && showImage && (
+      <>
+        <Image src={imgSrc}
+          onClick={() => {
+            setShowImage(false);
+          }}
+          className={styles.fullScreenImagePreviewComponent} />
+      </>
       )}
       {modalShow && <DcsmsCamera2 parentCallback={onPhoto} 
         modalShow={modalShow}
@@ -71,7 +87,7 @@ function CameraButton({isPro}) {
     </Container>
   );
 
-  return isPro==0? layout1:layout2;
+  return layout1;
 }
 
 export default CameraButton

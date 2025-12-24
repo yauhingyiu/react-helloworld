@@ -70,131 +70,130 @@ function Yhy() {
   ];
 
   const layout1 = (
-    <Container fluid>
+    <Container fluid className={` ${styles.container1}`}>
       
       
-      <div>
-        <div className="row">
-          <div className="col-md-12">
-            <div id="content">
-                  
-              <div className={styles.profile}>
-                <div className={styles.profileHeader}>
-           
-                  <div className={styles.profileHeaderCover}></div>
-           
-                  <div className={styles.profileHeaderContent}>
-           
-                    <div className={styles.profileHeaderImg}>
-                      <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt=""/>
-                    </div>
-           
-                    <div className={styles.profileHeaderInfo}>
-                      <h4 className="m-t-10 m-b-5">Sean Ngu</h4>
-                      <p className="m-b-10">&nbsp;</p>
-                      <p className="m-b-10">Experienced System Analyst</p>
-                      {/*<a href="#" className="btn btn-sm btn-info mb-2">Edit Profile</a>//*/}
-                    </div>
-
+      <div className="row">
+        <div className="col-md-12">
+          <div id="content">
+                
+            <div className={styles.profile}>
+              <div className={styles.profileHeader}>
+         
+                <div className={styles.profileHeaderCover}></div>
+         
+                <div className={styles.profileHeaderContent}>
+         
+                  <div className={styles.profileHeaderImg}>
+                    <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt=""/>
                   </div>
-                        {/*
-                        <ul className="profile-header-tab nav nav-tabs">
-                           <li className="nav-item"><a href="https://www.bootdey.com/snippets/view/bs4-profile-with-timeline-posts" target="__blank" className="nav-link_">POSTS</a></li>
-                           <li className="nav-item"><a href="https://www.bootdey.com/snippets/view/bs4-profile-about" target="__blank" className="nav-link_">ABOUT</a></li>
-                           <li className="nav-item"><a href="https://www.bootdey.com/snippets/view/profile-photos" target="__blank" className="nav-link_">PHOTOS</a></li>
-                           <li className="nav-item"><a href="https://www.bootdey.com/snippets/view/profile-videos" target="__blank" className="nav-link_">VIDEOS</a></li>
-                           <li className="nav-item"><a href="https://www.bootdey.com/snippets/view/bs4-profile-friend-list" target="__blank" className="nav-link_ active show">FRIENDS</a></li>
-                        </ul>
-                        //*/}
-                </div>
-              </div>
-                  
-              <div className={styles.profileContent}>
-                  
-                <div className={`${styles.tabContent} p-0`}>
-                  
-                  <div className={`${styles.tabPane} fade active show`} id="profile-post">
-                  
-                    <ul className={styles.timeline}>
-                    
-                    {
-                      data.map((a, index)=>(
-                        <li key={index}>
-                  
-                          <div className={styles.timelineTime}>
-                            <span className={styles.date}>{a.period1}</span>
-                            <span className={styles.time}>{a.jobTitle}</span>
-                          </div>
-
-                           <div className={styles.timelineIcon}>
-                              <a href="#">&nbsp;</a>
-                           </div>
-
-                           <div className={styles.timelineBody}>
-                              <div className={styles.timelineHeader}>
-                                 <span className={styles.userimage}><img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt=""/></span>
-                                 <span className={styles.username}>{a.clientName}<a href="#"></a> <small></small></span>
-                                 <span className={`${styles.pullRight} ${styles.textMuted}`}>{a.clientAddress? '('+a.clientAddress+')':''}</span>
-                              </div>
-                              <div className={styles.timelineContent} dangerouslySetInnerHTML={ {__html: '<p>'+a.jobDescription+'</p>'} }>
-                                 
-                              </div>
-                              <div className={styles.timelineLikes}>
-                                 <div className={styles.statsRight}>
-                                    <span className={styles.statsText}>{a.tags.map((b, index)=>(<span key={index}>{b}&nbsp;</span>))}</span>
-                                    <span className={styles.statsText}></span>
-                                 </div>
-                                 <div className={styles.stats}>
-                                    <span className="fa-stack fa-fw stats-icon">
-                                    <i className="fa fa-circle fa-stack-2x text-danger"></i>
-                                    <i className="fa fa-heart fa-stack-1x fa-inverse t-plus-1"></i>
-                                    </span>
-                                    <span className="fa-stack fa-fw stats-icon">
-                                    <i className="fa fa-circle fa-stack-2x text-primary"></i>
-                                    <i className="fa fa-thumbs-up fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                    <span className="stats-total"></span>
-                                 </div>
-                              </div>
-                              <div className={styles.timelineFooter}>
-                              {/*
-                                 <a href="#" className="m-r-15 text-inverse-lighter"><i className="fa fa-thumbs-up fa-fw fa-lg m-r-3"></i> Like</a>
-                                 <a href="#" className="m-r-15 text-inverse-lighter"><i className="fa fa-comments fa-fw fa-lg m-r-3"></i> Comment</a> 
-                                 <a href="#" className="m-r-15 text-inverse-lighter"><i className="fa fa-share fa-fw fa-lg m-r-3"></i> Share</a>
-                              //*/}
-                              </div>
-                              {/*
-                              <div className="timeline-comment-box">
-                                 <div className="user"><img src="https://bootdey.com/img/Content/avatar/avatar3.png"/></div>
-                                 <div className="input">
-                                    <form action="">
-                                       <div className="input-group">
-                                          <input type="text" className="form-control rounded-corner" placeholder="Write a comment..."/>
-                                          <span className="input-group-btn p-l-10">
-                                          <button className="btn btn-primary f-s-12 rounded-corner" type="button">Comment</button>
-                                          </span>
-                                       </div>
-                                    </form>
-                                 </div>
-                              </div>
-                              //*/}
-                           </div>
-
-                        </li>
-                      ))
-                    }
-                    </ul>
-
+         
+                  <div className={styles.profileHeaderInfo}>
+                    <h4 className="m-t-10 m-b-5">Sean Ngu</h4>
+                    <p className="m-b-10">&nbsp;</p>
+                    <p className="m-b-10">Experienced System Analyst</p>
+                    {/*<a href="#" className="btn btn-sm btn-info mb-2">Edit Profile</a>//*/}
                   </div>
-                        
+
                 </div>
-                     
+                      {/*
+                      <ul className="profile-header-tab nav nav-tabs">
+                         <li className="nav-item"><a href="https://www.bootdey.com/snippets/view/bs4-profile-with-timeline-posts" target="__blank" className="nav-link_">POSTS</a></li>
+                         <li className="nav-item"><a href="https://www.bootdey.com/snippets/view/bs4-profile-about" target="__blank" className="nav-link_">ABOUT</a></li>
+                         <li className="nav-item"><a href="https://www.bootdey.com/snippets/view/profile-photos" target="__blank" className="nav-link_">PHOTOS</a></li>
+                         <li className="nav-item"><a href="https://www.bootdey.com/snippets/view/profile-videos" target="__blank" className="nav-link_">VIDEOS</a></li>
+                         <li className="nav-item"><a href="https://www.bootdey.com/snippets/view/bs4-profile-friend-list" target="__blank" className="nav-link_ active show">FRIENDS</a></li>
+                      </ul>
+                      //*/}
               </div>
-                  
             </div>
+                
+            <div className={styles.profileContent}>
+                
+              <div className={`${styles.tabContent} p-0`}>
+                
+                <div className={`${styles.tabPane} fade active show`} id="profile-post">
+                
+                  <ul className={styles.timeline}>
+                  
+                  {
+                    data.map((a, index)=>(
+                      <li key={index}>
+                
+                        <div className={styles.timelineTime}>
+                          <span className={styles.date}>{a.period1}&nbsp;&nbsp;</span>
+                          <span className={styles.time}>{a.jobTitle}</span>
+                        </div>
+
+                         <div className={styles.timelineIcon}>
+                            <a href="#">&nbsp;</a>
+                         </div>
+
+                         <div className={styles.timelineBody}>
+                            <div className={styles.timelineHeader}>
+                               <span className={styles.userimage}><img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt=""/></span>
+                               <span className={styles.username}>{a.clientName}<a href="#"></a> <small></small></span>
+                               <span className={``}>{a.clientAddress? '('+a.clientAddress+')':''}</span>
+                            </div>
+                            <div className={styles.timelineContent} dangerouslySetInnerHTML={ {__html: '<p>'+a.jobDescription+'</p>'} }>
+                               
+                            </div>
+                            <div className={styles.timelineLikes}>
+                               <div className="text-end">
+                                  <span className={`${styles.statsText}`}>{a.tags.map((b, index)=>(b+' '))}</span>
+                                  <span className={styles.statsText}></span>
+                               </div>
+                               <div className={styles.stats}>
+                                  <span className="fa-stack fa-fw stats-icon">
+                                  <i className="fa fa-circle fa-stack-2x text-danger"></i>
+                                  <i className="fa fa-heart fa-stack-1x fa-inverse t-plus-1"></i>
+                                  </span>
+                                  <span className="fa-stack fa-fw stats-icon">
+                                  <i className="fa fa-circle fa-stack-2x text-primary"></i>
+                                  <i className="fa fa-thumbs-up fa-stack-1x fa-inverse"></i>
+                                  </span>
+                                  <span className="stats-total"></span>
+                               </div>
+                            </div>
+                            <div className={styles.timelineFooter}>
+                            {/*
+                               <a href="#" className="m-r-15 text-inverse-lighter"><i className="fa fa-thumbs-up fa-fw fa-lg m-r-3"></i> Like</a>
+                               <a href="#" className="m-r-15 text-inverse-lighter"><i className="fa fa-comments fa-fw fa-lg m-r-3"></i> Comment</a> 
+                               <a href="#" className="m-r-15 text-inverse-lighter"><i className="fa fa-share fa-fw fa-lg m-r-3"></i> Share</a>
+                            //*/}
+                            </div>
+                            {/*
+                            <div className="timeline-comment-box">
+                               <div className="user"><img src="https://bootdey.com/img/Content/avatar/avatar3.png"/></div>
+                               <div className="input">
+                                  <form action="">
+                                     <div className="input-group">
+                                        <input type="text" className="form-control rounded-corner" placeholder="Write a comment..."/>
+                                        <span className="input-group-btn p-l-10">
+                                        <button className="btn btn-primary f-s-12 rounded-corner" type="button">Comment</button>
+                                        </span>
+                                     </div>
+                                  </form>
+                               </div>
+                            </div>
+                            //*/}
+                         </div>
+
+                      </li>
+                    ))
+                  }
+                  </ul>
+
+                </div>
+                      
+              </div>
+                   
+            </div>
+                
           </div>
         </div>
       </div>
+
     </Container>
   );
 

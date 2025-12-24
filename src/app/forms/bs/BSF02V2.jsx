@@ -12,14 +12,14 @@ import Spinner from 'react-bootstrap/Spinner';
 import moment from 'moment';
 import MyDateRangePicker from '../../../common/MyDateRangePicker.jsx';
 import {useFetchGetData, DATE_FORMAT_YYYYMMDD, DATE_FORMAT_YYYYMMDD_HHMM} from '../../../services/ApiServices';
+import CameraButton from '../../ui/CameraButton.jsx'
 
 function BSF02V2() {
   
   const layout1 = (
     <Container fluid>
       <div className="row text-start">
-        <div>(Version 2)</div>
-        <h6>Development and Construction Management Board Instruction No. P07/12</h6>
+        <h3>Development and Construction Management Board Instruction No. P07/12</h3>
         <div className="col-12">
         [This form is applicable when there are both lift and escalator installations]<br/>
         INTEGRATED PAY FOR SAFETY, ENVIRONMENT AND HYGIENE SCHEME <br/>
@@ -72,6 +72,8 @@ function BSF02V2() {
 	Payment
 
 For ____________________ (assessment period)
+
+<CameraButton/>
 </div></td>
             </tr>
           </tbody>

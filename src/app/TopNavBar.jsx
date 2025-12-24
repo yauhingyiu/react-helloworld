@@ -72,7 +72,6 @@ function TopNavBar({contracts,
           <Navbar.Brand>
             <Button variant="normal" size="sm">
               <img src={iconArrowClockwise} className="logo" title="Switch contract" />
-              Switch
             </Button>
           </Navbar.Brand>
           <Navbar.Text>
