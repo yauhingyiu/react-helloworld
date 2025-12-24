@@ -99,29 +99,25 @@ function DcsmsCamera2({modalShow, setModalShow, parentCallback}) {
       ) : (
         //camera
         //videoSourceDeviceId={activeDeviceId}
-        camera.current? (
-          <Camera
-            ref={camera}
-            aspectRatio="cover"
-            facingMode="environment"
-            numberOfCamerasCallback={(i) => setNumberOfCameras(i)}
-            
-            errorMessages={{
-              noCameraAccessible: 'No camera device accessible. Please connect your camera or try a different browser.',
-              permissionDenied: 'Permission denied. Please refresh and give camera permission.',
-              switchCamera:
-                'It is not possible to switch camera to different one because there is only one video device accessible.',
-              canvas: 'Canvas is not supported.',
-            }}
-            videoReadyCallback={() => {
-              console.log('Video feed ready.');
-            }}
-          />
-        ):(
-          <video className={styles.video1} loop={true} autoPlay controls muted>
-            <source type="video/mp4" />
-          </video>
-        )
+        
+        <Camera
+          ref={camera}
+          aspectRatio="cover"
+          facingMode="environment"
+          numberOfCamerasCallback={(i) => setNumberOfCameras(i)}
+          
+          errorMessages={{
+            noCameraAccessible: 'No camera device accessible. Please connect your camera or try a different browser.',
+            permissionDenied: 'Permission denied. Please refresh and give camera permission.',
+            switchCamera:
+              'It is not possible to switch camera to different one because there is only one video device accessible.',
+            canvas: 'Canvas is not supported.',
+          }}
+          videoReadyCallback={() => {
+            console.log('Video feed ready.');
+          }}
+        />
+
       )}
       <div className={styles.controlComponent}>
         
