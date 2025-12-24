@@ -6,7 +6,7 @@ import Col from 'react-bootstrap/Col';
 import Accordion from 'react-bootstrap/Accordion';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import './Yhy.css';
+import styles from './Yhy.module.css';
 
 //https://themewagon.github.io/resume-2/
 function Yhy() {
@@ -73,23 +73,23 @@ function Yhy() {
     <Container fluid>
       
       
-      <div className="container">
+      <div>
         <div className="row">
           <div className="col-md-12">
-            <div id="content" className="content content-full-width">
+            <div id="content">
                   
-              <div className="profile">
-                <div className="profile-header">
+              <div className={styles.profile}>
+                <div className={styles.profileHeader}>
            
-                  <div className="profile-header-cover"></div>
+                  <div className={styles.profileHeaderCover}></div>
            
-                  <div className="profile-header-content">
+                  <div className={styles.profileHeaderContent}>
            
-                    <div className="profile-header-img">
+                    <div className={styles.profileHeaderImg}>
                       <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt=""/>
                     </div>
            
-                    <div className="profile-header-info">
+                    <div className={styles.profileHeaderInfo}>
                       <h4 className="m-t-10 m-b-5">Sean Ngu</h4>
                       <p className="m-b-10">&nbsp;</p>
                       <p className="m-b-10">Experienced System Analyst</p>
@@ -109,42 +109,42 @@ function Yhy() {
                 </div>
               </div>
                   
-              <div className="profile-content">
+              <div className={styles.profileContent}>
                   
-                <div className="tab-content p-0">
+                <div className={`${styles.tabContent} p-0`}>
                   
-                  <div className="tab-pane fade active show" id="profile-post">
+                  <div className={`${styles.tabPane} fade active show`} id="profile-post">
                   
-                    <ul className="timeline">
+                    <ul className={styles.timeline}>
                     
                     {
                       data.map((a, index)=>(
                         <li key={index}>
                   
-                          <div className="timeline-time">
-                            <span className="date">{a.period1}</span>
-                            <span className="time">{a.jobTitle}</span>
+                          <div className={styles.timelineTime}>
+                            <span className={styles.date}>{a.period1}</span>
+                            <span className={styles.time}>{a.jobTitle}</span>
                           </div>
 
-                           <div className="timeline-icon">
+                           <div className={styles.timelineIcon}>
                               <a href="#">&nbsp;</a>
                            </div>
 
-                           <div className="timeline-body">
-                              <div className="timeline-header">
-                                 <span className="userimage"><img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt=""/></span>
-                                 <span className="username">{a.clientName}<a href="#"></a> <small></small></span>
-                                 <span className="pull-right text-muted">{a.clientAddress? '('+a.clientAddress+')':''}</span>
+                           <div className={styles.timelineBody}>
+                              <div className={styles.timelineHeader}>
+                                 <span className={styles.userimage}><img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt=""/></span>
+                                 <span className={styles.username}>{a.clientName}<a href="#"></a> <small></small></span>
+                                 <span className={`${styles.pullRight} ${styles.textMuted}`}>{a.clientAddress? '('+a.clientAddress+')':''}</span>
                               </div>
-                              <div className="timeline-content" dangerouslySetInnerHTML={ {__html: '<p>'+a.jobDescription+'</p>'} }>
+                              <div className={styles.timelineContent} dangerouslySetInnerHTML={ {__html: '<p>'+a.jobDescription+'</p>'} }>
                                  
                               </div>
-                              <div className="timeline-likes">
-                                 <div className="stats-right">
-                                    <span className="stats-text">{a.tags.map((b, index)=>(<span key={index}>{b}&nbsp;</span>))}</span>
-                                    <span className="stats-text"></span>
+                              <div className={styles.timelineLikes}>
+                                 <div className={styles.statsRight}>
+                                    <span className={styles.statsText}>{a.tags.map((b, index)=>(<span key={index}>{b}&nbsp;</span>))}</span>
+                                    <span className={styles.statsText}></span>
                                  </div>
-                                 <div className="stats">
+                                 <div className={styles.stats}>
                                     <span className="fa-stack fa-fw stats-icon">
                                     <i className="fa fa-circle fa-stack-2x text-danger"></i>
                                     <i className="fa fa-heart fa-stack-1x fa-inverse t-plus-1"></i>
@@ -156,7 +156,7 @@ function Yhy() {
                                     <span className="stats-total"></span>
                                  </div>
                               </div>
-                              <div className="timeline-footer">
+                              <div className={styles.timelineFooter}>
                               {/*
                                  <a href="#" className="m-r-15 text-inverse-lighter"><i className="fa fa-thumbs-up fa-fw fa-lg m-r-3"></i> Like</a>
                                  <a href="#" className="m-r-15 text-inverse-lighter"><i className="fa fa-comments fa-fw fa-lg m-r-3"></i> Comment</a> 
