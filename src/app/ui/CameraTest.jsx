@@ -14,7 +14,7 @@ import {Camera} from "react-camera-pro";
 
 import {useFetchGetData, DATE_FORMAT_YYYYMMDD, DATE_FORMAT_YYYYMMDD_HHMM} from '../../services/ApiServices';
 
-
+//https://github.com/purple-technology/react-camera-pro/blob/master/example/src/App.tsx
 
 function CameraTest() {
   const camera = useRef(null);
@@ -25,16 +25,12 @@ function CameraTest() {
     <Container fluid>
       <div className="row">
         <div className="col">
-          <CameraButton />
+          <CameraButton isPro={0} />
         </div>
         <div className="col">
-          <CameraButton />
+          <CameraButton isPro={1} />
         </div>
-        <div className="col">
-          <Camera ref={camera} />
-          <Button onClick={() => setImage(camera.current.takePhoto())}>Take photo</Button>
-          <img src={image} alt='Taken photo'/>
-        </div>
+        
       </div>
     </Container>
   );
