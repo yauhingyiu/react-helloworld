@@ -38,7 +38,7 @@ div.divcontainer1 {
   margin-left: auto;  /* Centers horizontally */
   margin-right: auto; /* Centers horizontally */  
   padding:100px 30px;
-  background:url('src/assets/profile.png') right bottom no-repeat,#FFF;
+  background:url('../../assets/profile.png') right bottom no-repeat,#FFF;
   background-size:contain;
 }
 

@@ -21,7 +21,6 @@ import iconCamera from '/camera-solid-full.svg'
 import iconLightBlub from '/lightbulb-solid-full.svg'
 import testImg from '/Offsiteconstruction.jpg'
 import iconCloseXmark from '/circle-xmark.svg'
-import video1 from '/MicrosoftTeams-video.mp4'
 import {Camera} from "react-camera-pro";
 /*
 <select
@@ -120,7 +119,7 @@ function DcsmsCamera2({modalShow, setModalShow, parentCallback}) {
           />
         ):(
           <video className={styles.video1} loop={true} autoPlay controls muted>
-            <source src={video1} type="video/mp4" />
+            <source type="video/mp4" />
           </video>
         )
       )}
